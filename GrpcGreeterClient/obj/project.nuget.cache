@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "V48WOg1K0jqMdUbLPmlM2k0ihajnjzBke05VD7d1MS/AHXsMinSqwl66INopCtPc8XLsUwLqLAHd5GhP4YNcXQ==",
+  "dgSpecHash": "ZwFJBxraDL5vuQBiz8XUcGmchbMm4h1WjtGoGojEcQ68cYcLbumV4UC0S/kP9afkNJIcHz+5J6siWhjY4KlT/g==",
   "success": true,
   "projectFilePath": "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/GrpcGreeterClient.csproj",
   "expectedPackageFiles": [
