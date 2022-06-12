@@ -100,6 +100,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Oo]bj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -410,11 +411,4 @@ ASALocalRun/
 .localhistory/
 
 # Bin and Obj folders
-/TestAPI/TestAPI/obj
-/TestAPI/TestAPI/bin
-/TestAPI/TestAPI.Data/obj
-/TestAPI/TestAPI.Data/bin
-/TestAPI/TestAPI.Domain/obj
-/TestAPI/TestAPI.Domain/bin
-/TestAPI/TestAPI.Tests/obj
-/TestAPI/TestAPI.Tests/bin
+**/obj/**
