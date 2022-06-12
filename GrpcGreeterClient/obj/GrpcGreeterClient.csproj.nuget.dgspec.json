@@ -1,0 +1,74 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/GrpcGreeterClient.csproj": {}
+  },
+  "projects": {
+    "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/GrpcGreeterClient.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/GrpcGreeterClient.csproj",
+        "projectName": "GrpcGreeterClient",
+        "projectPath": "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/GrpcGreeterClient.csproj",
+        "packagesPath": "/Users/tiago/.nuget/packages/",
+        "outputPath": "/Users/tiago/Source/repos/dotnet-grpc-sample-api/GrpcGreeterClient/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/tiago/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.21.1, )"
+            },
+            "Grpc.Net.Client": {
+              "target": "Package",
+              "version": "[2.46.0, )"
+            },
+            "Grpc.Tools": {
+              "target": "Package",
+              "version": "[2.46.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
