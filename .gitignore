@@ -412,3 +412,4 @@ ASALocalRun/
 
 # Bin and Obj folders
 **/obj/**
+**/bin/**
