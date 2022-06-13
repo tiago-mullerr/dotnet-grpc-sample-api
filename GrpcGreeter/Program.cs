@@ -1,4 +1,5 @@
 ﻿using GrpcGreeter;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace GrpcGreeter
 {
@@ -15,6 +16,11 @@ namespace GrpcGreeter
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureKestrel(options =>
+                    {
+                        // Setup a HTTP/2 endpoint without TLS.
+                        options.ListenLocalhost(5280, o => o.Protocols = HttpProtocols.Http2);
+                    });
                 });
     }
 }

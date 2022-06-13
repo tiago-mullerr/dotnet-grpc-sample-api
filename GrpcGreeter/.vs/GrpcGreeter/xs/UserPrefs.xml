@@ -1,7 +1,12 @@
 ﻿<Properties StartupConfiguration="{34A7AF2B-7D0A-4936-B92A-61D1CB6375D9}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Protos/greet.proto">
+    <Files>
+      <File FileName="Startup.cs" Line="40" Column="20" />
+      <File FileName="Protos/greet.proto" Line="19" Column="21" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -10,7 +15,6 @@
               <Node name="Properties" expanded="True" />
               <Node name="Protos" expanded="True" />
               <Node name="Services" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -20,7 +24,8 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.GrpcGreeter PreferredExecutionTarget="/Applications/Safari.app" />
 </Properties>
