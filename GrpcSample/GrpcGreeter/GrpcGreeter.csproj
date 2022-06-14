@@ -8,12 +8,23 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\health.proto" GrpcServices="Server">
+      <Link>Protos\health.proto</Link>
+      <Access>Public</Access>
+      <ProtoCompile>True</ProtoCompile>
+      <CompileOutputs>True</CompileOutputs>
+      <OutputDir>obj\Debug\net6.0\</OutputDir>
+      <Generator>MSBuild:Compile</Generator>
+    </Protobuf>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
-    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.46.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.46.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Grpc.AspNetCore.Web" />
+    <None Remove="Protos\health.proto" />
+  </ItemGroup>
 </Project>

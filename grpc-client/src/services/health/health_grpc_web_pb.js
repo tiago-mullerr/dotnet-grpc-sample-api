@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for greet
+ * @fileoverview gRPC-Web generated client stub for health
  * @enhanceable
  * @public
  */
@@ -16,7 +16,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.greet = require('./greet_pb.js');
+proto.health = require('./health_pb.js');
 
 /**
  * @param {string} hostname
@@ -26,7 +26,7 @@ proto.greet = require('./greet_pb.js');
  * @struct
  * @final
  */
-proto.greet.GreeterClient =
+proto.health.HealthClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -52,7 +52,7 @@ proto.greet.GreeterClient =
  * @struct
  * @final
  */
-proto.greet.GreeterPromiseClient =
+proto.health.HealthPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -73,63 +73,63 @@ proto.greet.GreeterPromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.greet.HelloRequest,
- *   !proto.greet.HelloReply>}
+ *   !proto.health.EmptyRequest,
+ *   !proto.health.Reply>}
  */
-const methodDescriptor_Greeter_SayHello = new grpc.web.MethodDescriptor(
-  '/greet.Greeter/SayHello',
+const methodDescriptor_Health_IsAlive = new grpc.web.MethodDescriptor(
+  '/health.Health/IsAlive',
   grpc.web.MethodType.UNARY,
-  proto.greet.HelloRequest,
-  proto.greet.HelloReply,
+  proto.health.EmptyRequest,
+  proto.health.Reply,
   /**
-   * @param {!proto.greet.HelloRequest} request
+   * @param {!proto.health.EmptyRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.greet.HelloReply.deserializeBinary
+  proto.health.Reply.deserializeBinary
 );
 
 
 /**
- * @param {!proto.greet.HelloRequest} request The
+ * @param {!proto.health.EmptyRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.greet.HelloReply)}
+ * @param {function(?grpc.web.RpcError, ?proto.health.Reply)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.greet.HelloReply>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.health.Reply>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.greet.GreeterClient.prototype.sayHello =
+proto.health.HealthClient.prototype.isAlive =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/greet.Greeter/SayHello',
+      '/health.Health/IsAlive',
       request,
       metadata || {},
-      methodDescriptor_Greeter_SayHello,
+      methodDescriptor_Health_IsAlive,
       callback);
 };
 
 
 /**
- * @param {!proto.greet.HelloRequest} request The
+ * @param {!proto.health.EmptyRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.greet.HelloReply>}
+ * @return {!Promise<!proto.health.Reply>}
  *     Promise that resolves to the response
  */
-proto.greet.GreeterPromiseClient.prototype.sayHello =
+proto.health.HealthPromiseClient.prototype.isAlive =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/greet.Greeter/SayHello',
+      '/health.Health/IsAlive',
       request,
       metadata || {},
-      methodDescriptor_Greeter_SayHello);
+      methodDescriptor_Health_IsAlive);
 };
 
 
-module.exports = proto.greet;
+module.exports = proto.health;
 

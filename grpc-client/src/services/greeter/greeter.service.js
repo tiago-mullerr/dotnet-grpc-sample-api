@@ -1,14 +1,15 @@
+import { HelloRequest, HelloReply } from './greet_pb';
 import { GreeterClient } from './greet_grpc_web_pb.js';
-const { HelloRequest, HelloReply } = require('./greet_pb.js');
 
-var client = new GreeterClient('http://localhost:5280');
+var client = new GreeterClient('http://localhost:8080');
 
 var request = new HelloRequest();
-request.setName('World');
+request.setName('Mozi');
 
 const sayHello = () => {
-    client.SayHello(request, {}, (err, response) => {
-        console.log(response.getMessage());
+    client.sayHello(request, {}, (err, response) => {
+        err && console.log(err);
+        alert(response.getMessage());
     });
 }
 
