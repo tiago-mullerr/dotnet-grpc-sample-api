@@ -7,7 +7,7 @@ var request = new EmptyRequest();
 
 const isAlive = () => {
     client.isAlive(request, {}, (e, response) => {
-        e && console.log(e);
+        e && alert(`Error: ${e}. Is the gRPC API running?`);
         alert(response.getMessage());
     })
 }

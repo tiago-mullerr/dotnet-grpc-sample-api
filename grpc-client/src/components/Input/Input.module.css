@@ -1,0 +1,14 @@
+.custom-input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font: inherit;
+    line-height: 1.5rem;
+    margin: 1rem;
+}
+
+.custom-input:focus {
+    outline: none;
+    background: #f0f0f0;
+    border-color: #8b005d;
+}

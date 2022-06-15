@@ -1,4 +1,5 @@
 ﻿using GrpcGreeter.Services;
+using GrpcGreeter.Services.Interfaces;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,20 +23,24 @@ builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
            .AllowAnyHeader()
            .WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
 }));
+builder.Services.AddTransient<IFileStreamService, FileStreamService>();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseRouting();
 app.UseGrpcWeb();
-app.UseCors();
+app.UseCors("AllowAll");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<FileStreamService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<HealthService>().EnableGrpcWeb().RequireCors("AllowAll");
+
+    endpoints.MapControllerRoute("default", "{controller}/{action}/{id?}");
 });
-//app.MapGrpcService<GreeterService>();
+
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();

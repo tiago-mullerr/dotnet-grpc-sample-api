@@ -7,10 +7,11 @@ using CsvHelper.Configuration;
 using GrpcGreeter.Helpers;
 using GrpcGreeter.Dtos;
 using Newtonsoft.Json;
+using GrpcGreeter.Services.Interfaces;
 
 namespace GrpcGreeter.Services
 {
-    public class FileStreamService : Filestream.FilestreamBase
+    public class FileStreamService : Filestream.FilestreamBase, IFileStreamService
     {
         private readonly ILogger<FileStreamService> _logger;
         private readonly IConfiguration _configuration;
@@ -25,7 +26,7 @@ namespace GrpcGreeter.Services
         {
             try
             {
-                var path = _configuration["SampleFileLocation"];
+                var path = $"{Directory.GetParent(Environment.CurrentDirectory).FullName}/GrpcGreeter/SampleFiles/SampleFile.csv";
                 using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
                 using var reader = new StreamReader(stream, System.Text.Encoding.UTF8);
                 string line;
@@ -35,7 +36,7 @@ namespace GrpcGreeter.Services
                 while ((line = await reader.ReadLineAsync()) != null)
                 {
                     var parsedLine = JsonConvert.SerializeObject(HelperFunctions.ParseCsvLine<NotaFiscalDto>(line, header));
-                    await responseStream.WriteAsync(new StreamResponse() { Content = line });
+                    await responseStream.WriteAsync(new StreamResponse() { Content = parsedLine });
                 }
 
             }
@@ -45,9 +46,51 @@ namespace GrpcGreeter.Services
             }
         }
 
-        public override Task StreamLimitedFile(LimitedRequest request, IServerStreamWriter<StreamResponse> responseStream, ServerCallContext context)
+        public override async Task StreamLimitedFile(LimitedRequest request, IServerStreamWriter<StreamResponse> responseStream, ServerCallContext context)
         {
-            return base.StreamLimitedFile(request, responseStream, context);
+            try
+            {
+                var numberOfLines = int.Parse(request.NumberOfLines);
+                var path = $"{Directory.GetParent(Environment.CurrentDirectory).FullName}/GrpcGreeter/SampleFiles/SampleFile.csv";
+                using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+                using var reader = new StreamReader(stream, System.Text.Encoding.UTF8);
+                string line;
+
+                var header = await reader.ReadLineAsync();
+
+                int count = 0;
+                while ((line = await reader.ReadLineAsync()) != null && count < numberOfLines)
+                {
+                    var parsedLine = JsonConvert.SerializeObject(HelperFunctions.ParseCsvLine<NotaFiscalDto>(line, header));
+                    await responseStream.WriteAsync(new StreamResponse() { Content = parsedLine });
+                    count++;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await responseStream.WriteAsync(new StreamResponse() { Content = ex.Message });
+            }
+        }
+
+        public async Task<IEnumerable<NotaFiscalDto>> GetFileContents(int numberOfLines)
+        {
+            var path = $"{Directory.GetParent(Environment.CurrentDirectory).FullName}/GrpcGreeter/SampleFiles/SampleFile.csv";
+            using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.Asynchronous | FileOptions.SequentialScan);
+            using var reader = new StreamReader(stream, System.Text.Encoding.UTF8);
+            string line;
+
+            var header = await reader.ReadLineAsync();
+            var receiptList = new List<NotaFiscalDto>();
+
+            int count = 0;
+            while ((line = await reader.ReadLineAsync()) != null && count < numberOfLines)
+            {
+                receiptList.Add(HelperFunctions.ParseCsvLine<NotaFiscalDto>(line, header));
+                count++;
+            }
+
+            return receiptList;
         }
     }
 }

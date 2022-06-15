@@ -35,9 +35,15 @@
 		<None Remove="Protos\health.proto" />
 		<None Remove="Helpers\" />
 		<None Remove="Dtos\" />
+		<None Remove="Controllers\" />
+		<None Remove="Services\Interfaces\" />
+		<None Remove="SampleFiles\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Helpers\" />
 	  <Folder Include="Dtos\" />
+	  <Folder Include="Controllers\" />
+	  <Folder Include="Services\Interfaces\" />
+	  <Folder Include="SampleFiles\" />
 	</ItemGroup>
 </Project>
