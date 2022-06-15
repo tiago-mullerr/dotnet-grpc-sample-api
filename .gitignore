@@ -413,3 +413,6 @@ ASALocalRun/
 # Bin and Obj folders
 **/obj/**
 **/bin/**
+
+# Package Lock
+**/package-lock.json
