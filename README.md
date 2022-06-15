@@ -8,12 +8,12 @@
 ## Run the following command on the dotnet-grpc-sample-api/grpc-client/src folder: 
 ### docker run -d -v "$(pwd)"/envoy.yaml:/etc/envoy/envoy.yaml:ro -p 8080:8080 -p 9901:9901 envoyproxy/envoy:v1.22.0
 
-# 2. gRPC Client
+# 2. gRPC Client (React)
 ## Run the following commands on the dotnet-grpc-sample-api/grpc-client folder to run the app:
 ### npm install
 ### npm start
 
-# 3. gRPC Server
+# 3. gRPC Server (.NET 6.0 Web API)
 ## Run the following commands on the dotnet-grpc-sample-api/GrpcSample/GrpcGreeter folder or the project on visual studio:
 ### dotnet restore
 ### dotnet run
