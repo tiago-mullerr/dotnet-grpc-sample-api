@@ -4,16 +4,12 @@ option csharp_namespace = "GrpcHealth";
 
 package health;
 
-// The greeting service definition.
 service Health {
-  // Sends a greeting
   rpc IsAlive (EmptyRequest) returns (Reply);
 }
 
-// The request message containing the user's name.
 message EmptyRequest {}
 
-// The response message containing the greetings.
 message Reply {
   string message = 1;
 }

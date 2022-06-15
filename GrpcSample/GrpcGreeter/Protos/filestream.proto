@@ -1,0 +1,21 @@
+﻿
+syntax = "proto3";
+
+option csharp_namespace = "GrpcFilestream";
+
+package filestream;
+
+service Filestream {
+  rpc StreamFile (EmptyRequest) returns (stream StreamResponse);
+  rpc StreamLimitedFile (LimitedRequest) returns (stream StreamResponse);
+}
+
+message EmptyRequest {}
+
+message LimitedRequest {
+  string numberOfLines = 1;
+}
+
+message StreamResponse {
+  string content = 1;
+}

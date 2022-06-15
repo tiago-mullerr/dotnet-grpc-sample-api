@@ -32,6 +32,7 @@ app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb().RequireCors("AllowAll");
+    endpoints.MapGrpcService<FileStreamService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<HealthService>().EnableGrpcWeb().RequireCors("AllowAll");
 });
 //app.MapGrpcService<GreeterService>();
